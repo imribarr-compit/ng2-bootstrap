@@ -146,7 +146,7 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
   @HostListener('blur')
   public onBlur(): void {
     if (this._container && !this._container.isFocused) {
-      this.typeaheadSelectOnBlur.emit();
+      this.typeaheadSelectOnBlur.emit(this._container.active);
       this.hide();
     }
   }
@@ -167,7 +167,6 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
     // if tab default browser behavior will select next input field, and
     // therefore we should close the items list
     if (e.keyCode === 9) {
-      this.hide();
       return;
     }
   }

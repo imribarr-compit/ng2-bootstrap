@@ -77,7 +77,7 @@ export class TypeaheadContainerComponent {
     return !isBs3();
   }
 
-  protected _active: TypeaheadMatch;
+  public active: TypeaheadMatch;
   protected _matches: TypeaheadMatch[] = [];
 
   public constructor(element: ElementRef) {
@@ -92,8 +92,8 @@ export class TypeaheadContainerComponent {
     this._matches = value;
 
     if (this._matches.length > 0) {
-      this._active = this._matches[0];
-      if (this._active.isHeader()) {
+      this.active = this._matches[0];
+      if (this.active.isHeader()) {
         this.nextActiveMatch();
       }
     }
@@ -104,33 +104,33 @@ export class TypeaheadContainerComponent {
   }
 
   public selectActiveMatch(): void {
-    this.selectMatch(this._active);
+    this.selectMatch(this.active);
   }
 
   public prevActiveMatch(): void {
-    let index = this.matches.indexOf(this._active);
-    this._active = this.matches[index - 1 < 0
+    let index = this.matches.indexOf(this.active);
+    this.active = this.matches[index - 1 < 0
       ? this.matches.length - 1
       : index - 1];
-    if (this._active.isHeader()) {
+    if (this.active.isHeader()) {
       this.prevActiveMatch();
     }
 
   }
 
   public nextActiveMatch(): void {
-    let index = this.matches.indexOf(this._active);
-    this._active = this.matches[index + 1 > this.matches.length - 1
+    let index = this.matches.indexOf(this.active);
+    this.active = this.matches[index + 1 > this.matches.length - 1
       ? 0
       : index + 1];
-    if (this._active.isHeader()) {
+    if (this.active.isHeader()) {
       this.nextActiveMatch();
     }
   }
 
   public selectActive(value: TypeaheadMatch): void {
     this.isFocused = true;
-    this._active = value;
+    this.active = value;
   }
 
   public hightlight(match: TypeaheadMatch, query: any): string {
@@ -168,7 +168,7 @@ export class TypeaheadContainerComponent {
   }
 
   public isActive(value: TypeaheadMatch): boolean {
-    return this._active === value;
+    return this.active === value;
   }
 
   public selectMatch(value: TypeaheadMatch, e: Event = void 0): boolean {
