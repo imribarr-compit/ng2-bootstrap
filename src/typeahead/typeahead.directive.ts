@@ -56,6 +56,8 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
   /** fired when option was selected, return object with data of this option */
   @Output() public typeaheadOnSelect: EventEmitter<TypeaheadMatch> = new EventEmitter();
 
+  @Output() public typeaheadSelectOnBlur: EventEmitter<any> = new EventEmitter();
+
   /**
    * A selector specifying the element the typeahead should be appended to.
    * Currently only supports "body".
@@ -72,7 +74,6 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
   /** if true automatically select an item when there is one option that exactly matches the user input */
   // @Input() protected typeaheadSelectOnExact:boolean;
   /**  if true select the currently highlighted match on blur */
-  // @Input() protected typeaheadSelectOnBlur:boolean;
   /**  if false don't focus the input element the typeahead directive is associated with on selection */
     // @Input() protected typeaheadFocusOnSelect:boolean;
 
@@ -145,6 +146,7 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
   @HostListener('blur')
   public onBlur(): void {
     if (this._container && !this._container.isFocused) {
+      this.typeaheadSelectOnBlur.emit();
       this.hide();
     }
   }
