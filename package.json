@@ -2,7 +2,6 @@
   "name": "ng2-bootstrap",
   "version": "1.0.8",
   "description": "Native Angular Bootstrap Components",
-  "private": true,
   "scripts": {
     "lite-server": "lite-server -c demo/bs-config.json",
     "typedoc": "typedoc --exclude '**/*.spec.ts' ./src/",
