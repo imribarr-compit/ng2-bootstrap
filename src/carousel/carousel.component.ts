@@ -135,13 +135,13 @@ export class CarouselComponent implements OnDestroy {
       this._slides.remove(remIndex);
 
       // prevents exception with changing some value after checking
-      setTimeout(() => {
+      window.setTimeout(() => {
         this._select(nextSlideIndex);
       }, 0);
     } else {
       this._slides.remove(remIndex);
       const currentSlideIndex = this.getCurrentSlideIndex();
-      setTimeout(() => {
+      window.setTimeout(() => {
         // after removing, need to actualize index of current active slide
         this._currentActiveSlide = currentSlideIndex;
         this.activeSlideChange.emit(this._currentActiveSlide);

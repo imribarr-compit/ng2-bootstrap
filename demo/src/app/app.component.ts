@@ -50,6 +50,6 @@ export class AppComponent implements AfterContentInit {
       }
     };
 
-    this.router.events.subscribe((event: any) => setTimeout(() => justDoIt(event), 50));
+    this.router.events.subscribe((event: any) => window.setTimeout(() => justDoIt(event), 50));
   }
 }

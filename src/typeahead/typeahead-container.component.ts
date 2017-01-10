@@ -177,7 +177,7 @@ export class TypeaheadContainerComponent {
       e.preventDefault();
     }
     this.parent.changeModel(value);
-    setTimeout(() =>
+    window.setTimeout(() =>
       this.parent.typeaheadOnSelect.emit(value), 0
     );
     return false;

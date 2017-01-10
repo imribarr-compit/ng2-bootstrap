@@ -169,7 +169,7 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
     // this._addClassIn = false;
 
     if (this.isAnimated) {
-      this.timerHideModal = setTimeout(() => this.hideModal(), TRANSITION_DURATION);
+      this.timerHideModal = window.setTimeout(() => this.hideModal(), TRANSITION_DURATION);
     } else {
       this.hideModal();
     }
@@ -214,7 +214,7 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
     };
 
     if (this.isAnimated) {
-      setTimeout(transitionComplete, TRANSITION_DURATION);
+      window.setTimeout(transitionComplete, TRANSITION_DURATION);
     } else {
       transitionComplete();
     }
@@ -260,7 +260,7 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
         return;
       }
 
-      setTimeout(callback, BACKDROP_TRANSITION_DURATION);
+      window.setTimeout(callback, BACKDROP_TRANSITION_DURATION);
     } else if (!this._isShown && this.backdrop) {
       this.backdrop.instance.isShown = false;
 
@@ -272,7 +272,7 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
       };
 
       if (this.backdrop.instance.isAnimated) {
-        this.timerRmBackDrop = setTimeout(callbackRemove, BACKDROP_TRANSITION_DURATION);
+        this.timerRmBackDrop = window.setTimeout(callbackRemove, BACKDROP_TRANSITION_DURATION);
       } else {
         callbackRemove();
       }

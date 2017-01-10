@@ -46,7 +46,7 @@ export class AlertComponent implements OnInit {
   public ngOnInit(): void {
     if (this.dismissOnTimeout) {
       // if dismissOnTimeout used as attr without binding, it will be a string
-      setTimeout(() => this.close(),
+      window.setTimeout(() => this.close(),
         parseInt(this.dismissOnTimeout as string, 10));
     }
   }

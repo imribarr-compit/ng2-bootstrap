@@ -208,7 +208,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
       });
 
     if (this._delay) {
-      this._delayTimeoutId = setTimeout(() => { showTooltip(); }, this._delay);
+      this._delayTimeoutId = window.setTimeout(() => { showTooltip(); }, this._delay);
     } else {
       showTooltip();
     }
@@ -229,7 +229,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
     }
 
     this._tooltip.instance.classMap.in = false;
-    setTimeout(() => {
+    window.setTimeout(() => {
       this._tooltip.hide();
     }, this._fadeDuration);
   }

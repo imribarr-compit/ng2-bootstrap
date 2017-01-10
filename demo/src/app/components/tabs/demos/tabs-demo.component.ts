@@ -14,7 +14,7 @@ export class TabsDemoComponent {
   ];
 
   public alertMe():void {
-    setTimeout(function ():void {
+    window.setTimeout(function ():void {
       alert('You\'ve selected the alert tab!');
     });
   }
